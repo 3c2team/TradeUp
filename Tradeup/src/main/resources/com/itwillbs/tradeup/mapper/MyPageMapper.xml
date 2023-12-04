@@ -41,9 +41,7 @@
 			SET ${modify_type} = #{modify_value}
 			WHERE member_id = #{sId};
     	</update>
-    	
-    	
-    	
+    	    	
     	<update id="updateMainInfo">
     		UPDATE ${tb} 
 			SET ${col2} = CASE 
@@ -66,8 +64,6 @@
 						AND member_id = #{sId};
     	</delete>
     	
-    	
-    	
     	<insert id="insertMyAddress">
 			INSERT INTO MY_ADDRESS VALUES (
 				NULL
@@ -82,15 +78,22 @@
 			);    	
     	</insert>
     	
-<!--     	<select id=""> -->
-<!-- 			SELECT product_num -->
-<!-- 	   		     , member_id -->
-<!-- 			     , product_name -->
-<!-- 			     , product_price -->
-<!-- 			     , product_release -->
-<!-- 			     , product_main_img_real_file  -->
-<!-- 			FROM PRODUCT p -->
-<!-- 			ORDER BY product_release DESC; -->
-<!--     	</select> -->
+    	<update id="updateAddress">
+			UPDATE MY_ADDRESS 
+			SET 
+				recipient_name = #{recipient_name}
+				, recipient_phone_num = #{phone_num}
+				, address1 = #{address1}
+				, address2 = #{address2}
+				, address_name = #{address_name}
+				, address_main = (SELECT * FROM (							 
+												  SELECT address_main  
+												  FROM MY_ADDRESS
+												  WHERE member_id = #{sId} AND address_idx = #{address_idx}) a)
+				, postcode = #{postcode}
+			WHERE 1=1
+						AND address_idx = #{address_idx}
+						And member_id = #{sId};    		
+    	</update>
     	
     </mapper>

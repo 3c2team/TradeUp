@@ -35,5 +35,9 @@ public class MyPageService {
 	public int changeMainInfo(Map<String, Object> param) {
 		return mapper.updateMainInfo(param);
 	}
+	// 배송지관리 - 정보 수정
+	public int updateAddress(Map<String, Object> param) {
+		return mapper.updateAddress(param);
+	}
 
 }

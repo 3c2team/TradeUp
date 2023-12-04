@@ -182,6 +182,24 @@ public class MyPageController {
 		}
 	}
 	
+	// 배송지관리 - 배송지 수정
+	@PostMapping("ModifyAddress")
+	public String modifyAddress(HttpSession session, Model model, @RequestParam Map<String, Object> param) {
+		String sId = (String)session.getAttribute("sId");
+		param.put("sId", sId);
+		
+		int updateCount = service.updateAddress(param);
+		
+		if(updateCount > 0) {
+			return "redirect:/MyAddress";
+		} else {
+			model.addAttribute("msg", "배송지 정보 수정에 실패했습니다. 다시 시도해주세요.");
+			model.addAttribute("isClose", "false");
+			model.addAttribute("targetURL", "MyAddress");
+			return "forward";
+		}
+	}
+	
 	// 계좌관리&배송지관리 - 메인 변경
 	@GetMapping("ChangeMainInfo")
 	public String changeMainInfo(HttpSession session, Model model, @RequestParam Map<String, Object> param) {

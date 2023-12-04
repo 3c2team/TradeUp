@@ -13,11 +13,11 @@
  	</select>
  	
  	<!-- 전체 회원 목록 -->
-<!--  	<select id="selectMemberAll" resultType="com.itwillbs.tradeup.vo.MemberVO"> -->
-<!--  		SELECT * -->
-<!--  		FROM MEMBER -->
-<!--  		ORDER BY member_insert_date DESC -->
-<!--  	</select> -->
+ 	<select id="selectMemberAll" resultType="com.itwillbs.tradeup.vo.MemberVO">
+ 		SELECT *
+ 		FROM MEMBER
+ 		ORDER BY member_insert_date DESC
+ 	</select>
  	
  	<!-- 전체 회원 수 -->
  	<select id="selectMemberCount" resultType="map">
@@ -26,27 +26,27 @@
  	</select>
  	
  	<!-- 관리자 계정 조회 -->
-<!--  	<select id="selectAdminMember" resultType="com.itwillbs.tradeup.vo.MemberVO"> -->
-<!--  		SELECT * -->
-<!--  		FROM MEMBER -->
-<!--  		WHERE member_id = #{id} AND member_state = '관리자' -->
-<!--  	</select> -->
+ 	<select id="selectAdminMember" resultType="com.itwillbs.tradeup.vo.MemberVO">
+ 		SELECT *
+ 		FROM MEMBER
+ 		WHERE member_id = #{id} AND member_state = '관리자'
+ 	</select>
  	
  	<!-- 가입일로 회원 조회 -->
-<!--  	<select id="selectMemberPeriod" resultType="com.itwillbs.tradeup.vo.MemberVO"> -->
-<!--  		SELECT * -->
-<!--  		FROM MEMBER -->
-<!--  		WHERE  -->
-<!--  		<if test="!startDate.equals('')"> -->
-<!--  			member_insert_date BETWEEN #{startDate} -->
-<!--  			<choose> -->
-<!--  			<when test="!endDate.equals('')"> -->
-<!--  				AND date_format(date(#{endDate}), '%Y-%m-%d') -->
-<!--  			</when> -->
-<!--  			</choose> -->
-<!--  		</if> -->
-<!--  		ORDER BY member_insert_date DESC -->
-<!--  	</select> -->
+ 	<select id="selectMemberPeriod" resultType="com.itwillbs.tradeup.vo.MemberVO">
+ 		SELECT *
+ 		FROM MEMBER
+ 		WHERE 
+ 		<if test="!startDate.equals('')">
+ 			member_insert_date BETWEEN #{startDate}
+ 			<choose>
+ 			<when test="!endDate.equals('')">
+ 				AND date_format(date(#{endDate}), '%Y-%m-%d')
+ 			</when>
+ 			</choose>
+ 		</if>
+ 		ORDER BY member_insert_date DESC
+ 	</select>
  	
  	<!-- 가입일로 회원 수 조회 -->
  	<select id="selectMemberCountPeriod" resultType="map">

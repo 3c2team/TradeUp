@@ -21,18 +21,13 @@
   <title>TRADEUP | 거래내역</title>
 
   <meta name="description" content="" />
-
-  <!-- Favicon -->
-<!--   <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" /> -->
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!--   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
   <link
     href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet"
   />
-	
 	<!-- top css -->
 	<jsp:include page="../inc/style.jsp"></jsp:include>
   <!-- Icons. Uncomment required icon fonts -->
@@ -46,27 +41,11 @@
   <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
-  <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath }/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- Vendors CSS -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/myPage/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <!-- Page CSS -->
-  <!-- Helpers -->
+<%--   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/myPage/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" /> --%>
   <script src="${pageContext.request.contextPath }/resources/myPage/assets/vendor/js/helpers.js"></script>
-  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="${pageContext.request.contextPath }/resources/myPage/assets/js/config.js"></script>
 	<style type="text/css">
-/* 		.product{ */
-/* 		    display: flex; */
-/*     		align-items: center; */
-/* 		} */
-/* 		.product_info{ */
-/* 			margin-left: 20px; */
-/* 		    display: flex; */
-/* 		    flex-direction: column; */
-/* 		} */
 		.text-xs{font-size:.9rem}
 	</style>
 </head>
@@ -132,22 +111,12 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">금일 회원가입 수
                                             </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-<!--                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div> -->
-													<div class="h5 mb-0 font-weight-bold text-gray-800">${memberInCount} 명</div>
-                                                </div>
-<!--                                                 <div class="col"> -->
-<!--                                                     <div class="progress progress-sm mr-2"> -->
-<!--                                                         <div class="progress-bar bg-info" role="progressbar" -->
-<!--                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0" -->
-<!--                                                             aria-valuemax="100"></div> -->
-<!--                                                     </div> -->
-<!--                                                 </div> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-<!--                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> -->
+	                                        <div class="row no-gutters align-items-center">
+	                                            <div class="col-auto">
+	<!--                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div> -->
+												<div class="h5 mb-0 font-weight-bold text-gray-800">${memberInCount} 명</div>
+	                                            </div>
+	                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -164,9 +133,6 @@
                                                금일 회원탈퇴 수</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${memberOut } 명</div>
                                         </div>
-                                        <div class="col-auto">
-<!--                                             <i class="fas fa-comments fa-2x text-gray-300"></i> -->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -174,65 +140,41 @@
                     </div>
 						<br><br>
                     <!-- Content Row -->
-<!-- 							<div class="table-responsive text-nowrap"> -->
-
 								<!-- -------------------------------------------------------------- -->
-										<div id="layoutSidenav_content">
-										<main>
-											<div class="row">
-												<!-- AreaChart  -->
-												<div class="col-xl-6">
-													<div class="card-header py-3">
-			                                   			 <h6 class="m-0 font-weight-bold text-primary">수수료 현황</h6>
-			                               			 </div>
-					                                <div class="card-body">
-					                                    <div class="chart-area">
-					                                        <canvas id="myAreaChart"></canvas>
-					                                    </div>
-<!-- 					                                    Styling for the area chart can be found in the -->
-<%-- 					                                    <code>/js/demo/chart-area-demo.js</code> file. --%>
-					                                </div>
-												</div>
-												
-												<!-- PieChart  -->
-												<div class="col-xl-6">
-<!-- 													<div class="card mb-4"> css 효과-->
-														<div class="card-header">
-<!-- 															<i class="fas fa-chart-bar me-1"></i> 거래 방법 현황 --> 
-															<h6 class="m-0 font-weight-bold text-primary">거래 방법 현황</h6>
-														</div>
-														<br><br>
-														<div class="card-body">
-															<canvas id="myPieChart" width="100%" height="40"></canvas>
-														</div>
-														<br>
-<!-- 													</div> -->
-												</div>
-											</div>	
-										</main>
+							<div id="layoutSidenav_content">
+							<main>
+								<div class="row">
+									<!-- AreaChart  -->
+									<div class="col-xl-6">
+										<div class="card-header py-3">
+                                			<h6 class="m-0 font-weight-bold text-primary">수수료 현황</h6>
+                            			</div>
+		                                <div class="card-body">
+		                                    <div class="chart-area">
+		                                        <canvas id="myAreaChart"></canvas>
+		                                    </div>
+		                                </div>
 									</div>
-								
-								<!-- -------------------------------------------------------------- -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-						<!--/Table -->
+									
+									<!-- PieChart  -->
+									<div class="col-xl-6">
+											<div class="card-header">
+												<h6 class="m-0 font-weight-bold text-primary">거래 방법 현황</h6>
+											</div>
+											<br><br>
+											<div class="card-body">
+												<canvas id="myPieChart" width="100%" height="40"></canvas>
+											</div>
+											<br>
+									</div>
+								</div>	
+							</main>
+						</div>
 					</div>
 				</div>
-              <!--/ Responsive Table -->
 			</div>
-            <!-- / Content -->
-
-			<div class="content-backdrop fade"></div>
 			</div>
-          <!-- Content wrapper -->
 		</div>
-        <!-- / Layout page -->
-	</div>
-
-      <!-- Overlay -->
-	<div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
 
 	<%-- 바텀 메뉴 --%>
 	<jsp:include page="../inc/bottom.jsp"></jsp:include>
@@ -244,16 +186,7 @@
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/js/admin/product_sales.js"></script> --%>
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/js/main.js"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     
     <script
@@ -265,8 +198,6 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
 
-		
-	
 	
 	<!-- -------------------------------------------------------------------------------------------- -->
 	    <!-- Bootstrap core JavaScript-->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html
   lang="en"
@@ -123,28 +124,28 @@
 																	</td>
 																	<td>
 																		<div class="product pay-type">
-																			<div class="product_info"><strong>150</strong></div>
+																			<div class="product_info"><strong>${TransactionCount.uppayCount }</strong></div>
 																		</div>
 																	</td>
 																	<td>
 																		<div class="product pay-type">
-												                        	<span class="badge bg-label-prohibition">2,000,000 원</span>	
+												                        	<span class="badge bg-label-prohibition"><fmt:formatNumber value="${TransactionCount.uppay }" pattern="#,###" /> 원</span>	
 																		</div>
 																	</td>
 																</tr>
 																<tr>
 																	<td>
 																		<div class="product pay-type">
-																			<div class="product_info"><strong>카카오결제</strong></div>
+																			<div class="product_info"><strong>카카오페이</strong></div>
 																		</div>
 																	</td>
 																	<td>
 																		<div class="product pay-type">
-																			<div class="product_info"><strong>100</strong></div>
+																			<div class="product_info"><strong>${TransactionCount.kakaopayCount }</strong></div>
 																		</div>
 																	</td>
 																	<td>
-												                        <span class="badge bg-label-prohibition">1,500,000 원</span>	
+												                        <span class="badge bg-label-prohibition"><fmt:formatNumber value="${TransactionCount.kakaopay }" pattern="#,###" />원</span>	
 																	</td>
 																</tr>
 																<tr>
@@ -155,11 +156,11 @@
 																	</td>
 																	<td>
 																		<div class="product pay-type">
-																			<div class="product_info"><strong>50</strong></div>
+																			<div class="product_info"><strong>${TransactionCount.bankCount }</strong></div>
 																		</div>
 																	</td>
 																	<td>
-												                        <span class="badge bg-label-prohibition">1,000,000 원</span>	
+												                        <span class="badge bg-label-prohibition"><fmt:formatNumber value="${TransactionCount.bankTransfer }" pattern="#,###" /> 원</span>	
 																	</td>
 																</tr>
 															</tbody>

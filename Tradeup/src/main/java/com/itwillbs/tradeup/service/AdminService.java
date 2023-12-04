@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.tradeup.mapper.AdminMapper;
 import com.itwillbs.tradeup.vo.DepositVO;
+import com.itwillbs.tradeup.vo.MemberVO;
 import com.itwillbs.tradeup.vo.WithdrawVO;
 
 
@@ -23,9 +24,9 @@ public class AdminService {
 	}
 
 	// 총 회원 목록 조회
-//	public List<MemberVO> selectMemberAll() {
-//		return adminMapper.selectMemberAll();
-//	}
+	public List<MemberVO> selectMemberAll() {
+		return adminMapper.selectMemberAll();
+	}
 
 	// 총 회원 수 
 	public Map<String, Integer> selectMemberCount() {
@@ -33,16 +34,16 @@ public class AdminService {
 	}
 
 	// 관리자 계정인지 조회
-//	public List<MemberVO> selectAdminMember(Map<String, String> map) {
-//		// TODO Auto-generated method stub
-//		return adminMapper.selectAdminMember(map);
-//	}
+	public List<MemberVO> selectAdminMember(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return adminMapper.selectAdminMember(map);
+	}
 	
 	// 기간 회원 검색
-//	public List<MemberVO> selectMemberPeriodList(Map<String, String> map) {
-//		// TODO Auto-generated method stub
-//		return adminMapper.selectMemberPeriod(map);
-//	}
+	public List<MemberVO> selectMemberPeriodList(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return adminMapper.selectMemberPeriod(map);
+	}
 
 	// 기간 조회 회원 수
 	public Map<String, Integer> selectMemberPeriodCount(Map<String, String> map) {
@@ -61,11 +62,7 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		return adminMapper.selectDepositList();
 	}
-//	public List<WithdrawVO> selectWithdrawList() {
-//		// TODO Auto-generated method stub
-//		return adminMapper.selectWithdrawList();
-//	}
-
+	
 	// 거래 방법 출력
 	public List<DepositVO> selectTransacList() {
 		// TODO Auto-generated method stub

@@ -189,9 +189,9 @@
 <%-- 	<script src="${pageContext.request.contextPath }/resources/js/admin_datatable.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/js/admin_calender.js"></script> --%>
 
-<%-- 	<script src="${pageContext.request.contextPath }/resources/js/admin_authorization.js"></script> --%>
 	
 	<!-- -------------------------------------------------------------------------------------------------- -->
+	<script src="${pageContext.request.contextPath }/resources/js/admin_authorization.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/myPage/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 

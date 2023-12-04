@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.tradeup.service.AdminService;
 import com.itwillbs.tradeup.vo.DepositVO;
+import com.itwillbs.tradeup.vo.MemberVO;
 import com.itwillbs.tradeup.vo.WithdrawVO;
-
 
 
 @Controller
@@ -141,16 +141,16 @@ public class AdminController {
 		System.out.println("id : " + map.get("id") + ", passwd : " +  map.get("passwd"));
 		
 		// 관리자 계정인지 조회
-//		List<MemberVO> adminMember = adminService.selectAdminMember(map);
-//		System.out.println("관리자 계정이니? : " + adminMember);
+		List<MemberVO> adminMember = adminService.selectAdminMember(map);
+		System.out.println("관리자 계정이니? : " + adminMember);
 		
-//		if(adminMember.isEmpty()) {
-//			model.addAttribute("msg", "관리자 계정이 아닙니다."); // 출력할 메세지
-//			return "fail_back";
-//		}
+		if(adminMember.isEmpty()) {
+			model.addAttribute("msg", "관리자 계정이 아닙니다."); // 출력할 메세지
+			return "fail_back";
+		}
 		
 		String member_id = map.get("id");
-//		MemberVO dbMember = service.getMemberLogin(member_id);
+//		MemberVO dbMember = adminService.getMemberLogin(member_id);
 //		session.setAttribute("sId", map.get("id"));
 //		session.setAttribute("sName", dbMember.getMember_name());
 		
@@ -187,16 +187,16 @@ public class AdminController {
 		map.put("id", sId);
 		
 		// 관리자 계정인지 조회
-//		List<MemberVO> adminMember = adminService.selectAdminMember(map);
+		List<MemberVO> adminMember = adminService.selectAdminMember(map);
 		
 //		if(adminMember.isEmpty()) {
 //			model.addAttribute("msg", "로그인 후 이용 바랍니다."); // 출력할 메세지
 //			return "fail_back";
 //		}
 		
-//		List<MemberVO> memberList = adminService.selectMemberAll();
-//		System.out.println("총 회원 조회 : " + memberList);
-//		model.addAttribute("memberList",memberList);
+		List<MemberVO> memberList = adminService.selectMemberAll();
+		System.out.println("총 회원 조회 : " + memberList);
+		model.addAttribute("memberList",memberList);
 
 		Map<String, Integer> memberCount = adminService.selectMemberCount();
 		System.out.println("총 회원 수 : " + memberCount.get("member"));
@@ -217,9 +217,9 @@ public class AdminController {
 		map.put("endDate",endDate);
 		
 		// 기간 회원 검색
-//		List<MemberVO> memberPeriod = adminService.selectMemberPeriodList(map);
-//		System.out.println("기간 검색 회원 : " + memberPeriod);
-//		model.addAttribute("memberList", memberPeriod);
+		List<MemberVO> memberPeriod = adminService.selectMemberPeriodList(map);
+		System.out.println("기간 검색 회원 : " + memberPeriod);
+		model.addAttribute("memberList", memberPeriod);
 		// 기간 회원 수 조회
 		Map<String, Integer> memberCount = adminService.selectMemberPeriodCount(map);
 		System.out.println("기간 회원 수 : " + memberCount.get("memberCount"));
@@ -245,9 +245,9 @@ public class AdminController {
 			}
 		}
 		
-//		List<MemberVO> memberList = adminService.selectMemberAll();
-//		System.out.println("총 회원 조회 : " + memberList);
-//		model.addAttribute("memberList",memberList);
+		List<MemberVO> memberList = adminService.selectMemberAll();
+		System.out.println("총 회원 조회 : " + memberList);
+		model.addAttribute("memberList",memberList);
 
 		Map<String, Integer> memberCount = adminService.selectMemberCount();
 		System.out.println("총 회원 수 : " + memberCount.get("member"));
@@ -274,9 +274,9 @@ public class AdminController {
 			}
 		}
 		
-//		List<MemberVO> memberList = adminService.selectMemberAll();
-//		System.out.println("총 회원 조회 : " + memberList);
-//		model.addAttribute("memberList",memberList);
+		List<MemberVO> memberList = adminService.selectMemberAll();
+		System.out.println("총 회원 조회 : " + memberList);
+		model.addAttribute("memberList",memberList);
 
 		Map<String, Integer> memberCount = adminService.selectMemberCount();
 		System.out.println("총 회원 수 : " + memberCount.get("member"));

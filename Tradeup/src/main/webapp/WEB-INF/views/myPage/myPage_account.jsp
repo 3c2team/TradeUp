@@ -7,6 +7,7 @@
 	계좌 10개까지 등록 가능
 	(만약 10개 초과시 추가버튼 안보이게 버튼 수정)
 	
+	만약 대표계좌가 없으면 대표계좌 설정 오류는 안나는디.....찝찝하다...!!!
 
 --%>
 <html
@@ -76,7 +77,7 @@
 						<div class="container-xxl flex-grow-1 container-p-y">
 							<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">내 정보 /</span> 계좌 관리
 								<!-- 주소지 추가 버튼~ -->
-								<button id="address_add" class="btn rounded-pill btn-icon btn-outline-primary" style="float: right;">
+								<button id="account_add" class="btn rounded-pill btn-icon btn-outline-primary" style="float: right;">
 									<span class="tf-icons bx bx-plus"></span>
 								</button>
 							</h4>
@@ -92,24 +93,13 @@
 													<i class="bx bx-dots-vertical-rounded"></i>
 												</button>
 												<div class="dropdown-menu">
-													<c:if test="${account.account_main eq false }">
-														<a class="dropdown-item" href="javascript:void(0);"
+													<c:if test="${account.account_main eq false or empty account.account_main }">
+														<a class="dropdown-item" href="ChangeMainInfo?tb=MY_ACCOUNT&value=${account.account_idx }&col=account_idx&col2=account_main"
 														><i class="bx bx-star me-1"></i> 대표계좌로 지정</a
 														>
-														
-														
-														<script type="text/javascript">
-															
-														</script>
 													</c:if>
-													<a class="dropdown-item"
-														type="button"
-														class="btn btn-primary"
-														data-bs-toggle="modal"
-														data-bs-target="#largeModal"
-													><i class="bx bx-edit-alt me-1"></i> 수정</a
-													>
-													<a class="dropdown-item" href="javascript:void(0);"
+													
+													<a class="dropdown-item" href="DeleteInfo?tb=MY_ACCOUNT&value=${account.account_idx }&col=account_idx"
 													><i class="bx bx-trash me-1"></i> 삭제</a
 													>
 												</div>

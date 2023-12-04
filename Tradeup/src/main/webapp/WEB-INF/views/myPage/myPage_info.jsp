@@ -9,7 +9,8 @@
 	정규식 추가
 	계정 연동
 	회원 탈퇴
-
+	대표계좌. 대표주소 없을 때 아무것도 안뜸!
+	프로필 업로드 성공하고 잘 불러오는데 오류뜸 확인
 --%>
 
 <html
@@ -81,7 +82,30 @@
 	    margin: auto;
   	}
   </style>
+  
+  <script>
+    function submitForm() {
+    	var formData = $('#MyInfoModify').serialize();
+    	$.ajax({
+            type: 'POST',
+            url: 'MyInfoModify',
+            data: formData,
+            dataType: "json",
+            success: function(response) {
+            	// 판별 추가하기
+	            window.location.reload();
+            },
+            error: function() {
+                alert('서버 오류가 발생했습니다.');
+            }
+    	});
+    }
+</script>
+  
 </head>
+
+
+
 <body>
 	<%-- 탑 메뉴 --%>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
@@ -101,17 +125,24 @@
 									<div class="card-header d-flex align-items-center justify-content-center" style="flex-direction: column;">
 										<div class="mb-4 mt-5">
 											<div class="info-img">
-												<img src="${pageContext.request.contextPath }/resources/myPage/assets/img/avatars/FxxQO6pacAAZ808.jpg" class="rounded-circle" />
+												<a
+													data-bs-toggle="modal"
+													href="#modify_img"
+												>	
+													<%-- 등록된 이미지 없을 경우 추가! --%>
+													<img src="${member.member_profile_img }" class="rounded-circle" />
+												</a>
+												<jsp:include page="modal/modify_img.jsp"></jsp:include>
 											</div>
 										</div>
 										<h5>
 											${member.member_nick_name }
 											<a 
 												data-bs-toggle="modal"
-												href="#info_adit_modal"
+												href="#modify_nick_name"
 											><i class="tf-icons bx bx-edit"></i>
 											</a>
-											<jsp:include page="modal/info_adit_modal.jsp"></jsp:include>
+											<jsp:include page="modal/modify_nick_name.jsp"></jsp:include>
 										</h5>
 										<h5>${member.member_id } <span class="text-muted fw-light">(#${member.member_num })</span></h5>
 									</div>
@@ -173,7 +204,7 @@
 										</div>
 										<div>
 											<label class="form-label text-muted">주소</label>
-											<h5>[우편번호] ${member.address1 } ${member.address2 }</h5>
+											<h5>[${member.postcode }] ${member.address1 } ${member.address2 }</h5>
 										</div>
 										<div class="divider">
 											<div class="divider-text">
@@ -220,7 +251,12 @@
 									>
 								</div>
 								<%-- 모달창 버튼 --%>
-								<button type="button" class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete_account_modal">회원탈퇴</button>
+								
+								<button type="button"
+									class="btn btn-danger"
+									id="deleteButton"
+									data-bs-toggle="modal"
+									data-bs-target="#delete_account_modal">회원탈퇴</button>
 								<jsp:include page="modal/delete_account_modal.jsp"></jsp:include>
 							</div>
 						</div>

@@ -60,10 +60,11 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/js/config.js"></script>
-
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  
-  </head>
+	
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
+	
+  	
+</head>
 
 <body>
 	<%-- 탑 메뉴 --%>
@@ -78,13 +79,12 @@
 					<div class="container-xxl flex-grow-1 container-p-y">
 						<div class="container-xxl flex-grow-1 container-p-y">
 							<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">내 정보 /</span> 배송지 관리
-								<!-- 주소지 추가 버튼~ -->
 								<button 
 									id="address_add"
 									class="btn rounded-pill btn-icon btn-outline-primary"
 									style="float: right;"
-									data-bs-toggle="offcanvas"
-									data-bs-target="#offcanvasEnd"
+									onclick="window.open('AddAddressFrom'
+							 							, 'question_from', 'width=600, height=800, location=no, status=no, scrollbars=no')"
 								>
 									<span class="tf-icons bx bx-plus"></span>
 								</button>
@@ -101,30 +101,35 @@
 														<i class="bx bx-dots-vertical-rounded"></i>
 													</button>
 													<div class="dropdown-menu">
-														<c:if test="${address.address_main eq false }">
-															<a class="dropdown-item" href="javascript:void(0);"
-															><i class="bx bx-star me-1"></i> 대표계좌로 지정</a
+														<c:if test="${address.address_main eq false or empty address.address_main }">
+															<a class="dropdown-item" href="ChangeMainInfo?tb=MY_ADDRESS&value=${address.address_idx }&col=address_idx&col2=address_main"
+															><i class="bx bx-star me-1"></i> 대표배송지로 지정</a
 															>
 														</c:if>
-														<a class="dropdown-item"
+														<a class="dropdown-item btn-modal"
 														  type="button"
 														  class="btn btn-primary"
 														  data-bs-toggle="modal"
 														  data-bs-target="#addressModal"
+														  data-id="${address.address_idx }"
 														  >
 														  
 															<i class="bx bx-edit-alt me-1"></i> 수정
 														</a>
-														<a class="dropdown-item" href="javascript:void(0);"
+														<a class="dropdown-item" href="DeleteInfo?tb=MY_ADDRESS&value=${address.address_idx }&col=address_idx"
 														><i class="bx bx-trash me-1"></i> 삭제</a
 														>
 													</div>
 												</div>
-												<h5 class="mb-0">${address.address_name }</h5>											
+												<h5 class="mb-0" id="address_name_${address.address_idx }">${address.address_name }</h5>											
 												<hr>
-												<p>${address.recipient_name }</p>
-												<p>${address.recipient_phone_num }</p>
-												<p>[56455]${address.address1 } ${address.address2 }</p>
+												<p id="recipient_name_${address.address_idx }">${address.recipient_name }</p>
+												<p id="recipient_phone_${address.address_idx }">${address.recipient_phone_num }</p>
+												<p>
+													<span id="postcode_${address.address_idx }">[${address.postcode }] </span>
+													<span id="address1_${address.address_idx }">${address.address1 }</span>
+													<span id="address2_${address.address_idx }"> ${address.address2 }</span>
+												</p>
 											</div>
 										</div>
 									</div>
@@ -142,7 +147,7 @@
 	<%-- 수정 모달 --%>
 	<jsp:include page="modal/address_modal.jsp"></jsp:include>
 	<%-- 추가 모달? --%>
-	<jsp:include page="offcanvas/address_add.jsp"></jsp:include>
+<%-- 	<jsp:include page="offcanvas/address_add.jsp"></jsp:include> --%>
 	<%-- 바텀 메뉴 --%>
 	<jsp:include page="../inc/bottom.jsp"></jsp:include>
 	
@@ -160,7 +165,7 @@
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/js/main.js"></script>
 
     <!-- Page JS -->
-
+	
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>

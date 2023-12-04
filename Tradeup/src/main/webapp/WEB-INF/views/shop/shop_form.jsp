@@ -174,47 +174,6 @@ $(function () {
 	
 	$("#file").on("change", uploadImageHandler);
 	
-// 	var count = 0;
-// 	var files = []; 
-// 	$("input[type=file][name=file]").on("change", function(event) {
-// 		const file = event.target.files;
-// 		count += 1;
-// 		if(count > 10){
-// 			alert("등록 최대갯수를 초과하였습니다");
-// 			count -= 1;
-// 			return;
-// 		}
-		
-// 		files.push(file);
-// 		$("#count").text(count);
-// 		var image = new Image();
-// 		var ImageTempUrl = window.URL.createObjectURL(file[0]);
-		
-		
-// 		image.src = ImageTempUrl;
-// 		image.name = file[0].name;
-// 		image.className = "custom_btn custom_img";
-		
-// 		// 스크립트
-// //			debugger;
-// 		// JQuery
-// 		$("#imgArea").append(image);
-		
-// 		$(image).on("click",function(){
-// 			if(confirm("삭제하시겠습니까?")){
-// 				$(this).remove("");
-// 				count -= 1;
-// 				$("#count").text(count);
-// 				for(let i = 0; i < files.length; i++){
-// 					if(file[i].name == $(this)[0].name){
-// 						 files.splice(i, 1);
-// 					}						
-// 				}
-// 			debugger;
-// 			console.log(files);
-// 			}
-// 		});
-// 	});
 });
 
 function uploadImageHandler(e) {

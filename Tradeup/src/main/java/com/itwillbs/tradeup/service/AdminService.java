@@ -130,9 +130,15 @@ public class AdminService {
 	}
 
 	//거래방법, 총액 일주일 조회
-	public Map<String, Integer> selectTransactionWeek() {
+	public Map<String, Integer> selectTransactionWeek(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		return adminMapper.selectTransactionWeek();
+		return adminMapper.selectTransactionWeek(map);
+	}
+
+	// 구매확정 수수료
+	public Map<String, Integer> selectCommissionSum() {
+		// TODO Auto-generated method stub
+		return adminMapper.selectCommissionSum();
 	}
 
 

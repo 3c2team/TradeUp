@@ -9,7 +9,8 @@
  	<select id="selectMemberJoin" resultType="map">
  		SELECT COUNT(member_num) as selectMemberIn
 		FROM MEMBER
-		WHERE DATE_FORMAT(member_insert_date, "%Y-%m-%d") = CURDATE()
+<!-- 		WHERE DATE_FORMAT(member_insert_date, "%Y-%m-%d") = CURDATE() -->
+		WHERE member_insert_date > date_add(now(),interval -1 week)
  	</select>
  	
  	<!-- 전체 회원 목록 -->
@@ -104,18 +105,20 @@
 		WHERE member_id = #{admin}
 	</update>
  	
- 	<!-- 금일 거래량 및 수수료 현황 -->
+ 	<!-- 주간 거래량 및 수수료 현황 -->
  	<select id="selectCommission" resultType="map">
  		SELECT SUM(commission) as commission, count(*) as count
  		FROM WITHDRAW
- 		WHERE DATE_FORMAT(withdraw_date, "%Y-%m-%d") = CURDATE() AND buy_check = '구매확정'
+<!--  		WHERE DATE_FORMAT(withdraw_date, "%Y-%m-%d") = CURDATE() AND buy_check = '구매확정' -->
+ 		WHERE withdraw_date > date_add(now(),interval -1 week) 
  	</select>
  	
- 	<!-- 금일 회원 탈퇴 수 -->
+ 	<!-- 주간 회원 탈퇴 수 -->
  	<select id="selectMemberOut" resultType="map">
  		SELECT count(*) as memberOut
  		FROM MEMBER
- 		WHERE member_state = '회원탈퇴' AND DATE_FORMAT(member_insert_date, "%Y-%m-%d") = CURDATE()
+<!--  		WHERE member_state = '회원탈퇴' AND DATE_FORMAT(member_insert_date, "%Y-%m-%d") = CURDATE() -->
+ 		WHERE member_state = '회원탈퇴' AND member_insert_date > date_add(now(),interval -1 week)
  	</select>
  	
  	<!-- 출금내역 기간조회 -->
@@ -201,7 +204,24 @@
     		, sum(case when method like '카카오페이' then commission end) as 'kakaopay'
     		, sum(case when method like '업페이' then commission end) as 'uppay'
 		FROM WITHDRAW
-		where withdraw_date > date_add(now(),interval -1 week)
+		WHERE
+		<if test="startDate.equals('')">
+			withdraw_date > date_add(now(),interval -1 week)
+ 			<choose>
+ 			<when test="!startDate.equals('')">
+ 				DATE(withdraw_date) BETWEEN #{startDate}
+ 			</when>
+ 			<when test="!endDate.equals('')">
+ 				AND date_format(date(#{endDate}), '%Y-%m-%d')
+ 			</when>
+ 			</choose>
+ 		</if>
+	</select>
+	
+	<select id="selectCommissionSum" resultType="map">
+		SELECT sum(commission) as chargeSum
+		FROM WITHDRAW
+		WHERE buy_check = '구매확정';
 	</select>
     
 </mapper>

@@ -36,6 +36,7 @@
                             </li>
                             <li><a href="FraudInquiry">사기조회</a></li>
                             <li><a href="MarketPriceInquiry">시세조회</a></li>
+                            <li><a href="ChatMain">채팅테스트</a></li>
                         </ul>
                     </nav>
                 </div>

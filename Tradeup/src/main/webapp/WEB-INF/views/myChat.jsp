@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${pageContext.request.contextPath }/resources/js/chatting.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.0.js"></script>
 <style>
 * {
     padding: 0;
@@ -112,8 +114,11 @@ a {
         </div>
     </div>
     <div>
-		<input type="text" id="chatMessage" style="margin-left: 25px;" onkeyup="enterKey();">
-		<button id="sendBtn" onclick="sendMessage();">전송</button>
+<!-- 		<input type="text" id="chatMessage" style="margin-left: 25px;" onkeyup="enterKey();"> -->
+<!-- 		<button id="sendBtn" onclick="sendMessage();">전송</button> -->
+		<input type="text" id="chatMsg">
+		<input type="button" value="전송" id="btnSend">
+<!-- 		<button id="sendBtn" onclick="sendMessage();">전송</button> -->
 	</div>
 </body>
 </html>

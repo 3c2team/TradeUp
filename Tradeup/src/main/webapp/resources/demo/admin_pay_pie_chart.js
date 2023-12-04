@@ -14,33 +14,35 @@ $("#search_btn").click(function(){
 	}
 });
 
-
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
-//	$.ajax({
-//		type: "POST",
-//		url: "",
-//		async: false,
-//		data: {
-//			start, end
-//		},
-//		success: function(adminSelectProductSales) {
-////			product_category = adminSelectProductSales.map(row => row.category);
-//			sales = adminSelectProductSales.map(row => row.sales);
+	$.ajax({
+		type: "POST",
+		url: "TransactionMethod",
+		async: false,
+		data: {},
+		success: function(TransactionCount) {
+//			alert(TransactionCount);
+			kakaopayCount = TransactionCount.kakaopayCount;
+			uppayCount = TransactionCount.uppayCount;
+			bankCount = TransactionCount.bankCount;
 			
-//		},
-//		error:function(){
-//			alert("들고오기 실패");
-//		}
-//	});
+//			bankCount = TransactionCount.map(row => row.bankCount);
+//			kakaopayCount = TransactionCount.map(row => row.kakaopayCount);
+//			uppayCount = TransactionCount.map(row => row.uppayCount);
+		},
+		error:function(){
+			alert("들고오기 실패");
+		}
+	});
 	
 var myPieChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ["업페이", "직접거래","카카오페이","무통장입금"],
+    labels: ["업페이","카카오페이","무통장입금"],
     datasets: [{
-      data: [40,30,20,10],
-      backgroundColor: ['#5F12D3', '#2113D4', '#D4134D', '#13BCD4','#000'],
+      data: [uppayCount,kakaopayCount,bankCount],
+      backgroundColor: ['#5F12D3', '#2113D4', '#D4134D'],
 //      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745','#000'],
     }],
   },

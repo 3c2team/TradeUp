@@ -91,8 +91,10 @@ $(function() {
 			$("#member_phone").val(addr.recipient_phone_num);
 			$("#zonecode").val(addr.postcode);
 			$("#new").hide();
-			$('input[type="checkbox"][name="new"]').prop('checked',false);
-		   
+			$('input[type="checkbox"][name="add"]').val('N');
+			$('input[type="checkbox"][name="pick"]').val('N');
+			$('input[type="checkbox"][name="add"]').prop('checked',false);
+			$('input[type="checkbox"][name="pick"]').prop('checked',false);
 	   } else{
 	         $('input[type="text"]').val("");
 	         $('#member_id').val(member_sId.value); // id는 그대로 유지
@@ -107,7 +109,7 @@ $(function() {
 			$(this).prop('checked',true);
 		}
 		// 무통장 입금 시 입금 계좌 숨김 처리
-		if ($('input[type="checkbox"][id="paypal"]').is(":checked")) {
+		if ($('input[type="checkbox"][id="paypal"]').prop('checked')) {
             $("#block").show();
         } else {
             $("#block").hide();

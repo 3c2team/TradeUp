@@ -157,7 +157,7 @@
                                 <ul class="checkout__total__all">
                                     <li>총 가격 <span>33,300</span></li>
                                 </ul>
-                                <button type="submit" class="site-btn" id="paymentCheck">업페이로 결제하기</button>
+                                <button type="submit" class="site-btn" id="paymentCheck" style="padding: 3%; font-size: 18px;">업페이로 결제하기</button>
                             </div>
                         </div>
                     </div>

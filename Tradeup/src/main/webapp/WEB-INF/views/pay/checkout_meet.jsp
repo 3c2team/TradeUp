@@ -179,7 +179,7 @@
                                 		<option value="sinhan">신한은행</option>
                                		</select>
 								</div>
-                                <button type="submit" class="site-btn" id="paymentCheck">결제하기</button>
+                                <button type="submit" class="site-btn" id="paymentCheck" style="padding: 3%; font-size: 18px;">결제하기</button>
                             </div>
                         </div>
                     </div>

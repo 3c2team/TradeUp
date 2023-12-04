@@ -133,7 +133,7 @@
     <!-- 주소 변경 모달 창 시작 -->
     <div id="modal-box">
     	<div id="modal-contents">
-    		<button id="close" style="margin-bottom: 2%; "class="btn btn-primary">&times;</button>
+    		<button id="close" style="margin-bottom: 2%; "class="btn btn_primary">&times;</button>
     		<h5 id="title" style="font-style: bold; margin-top: 2%; margin-bottom: 4%;">주소지 선택</h5>
     		<div id="addresses">
     		 <input type="hidden" id="addressMain" value="${addressMain }">
@@ -274,11 +274,11 @@
                                 	<select name="bank" id="bank">
                                 		<option value="noSelect" disabled selected>입금 은행을 선택해주세요.</option>
                                 		<option value="kakao">카카오뱅크</option>
-                                		<option value="kb">산업은행</option>
+                                		<option value="su">산업은행</option>
                                 		<option value="sinhan">신한은행</option>
                                		</select>
 								</div>
-                                <button type="submit" class="site-btn" id="paymentCheck">결제하기</button>
+                                <button type="submit" class="site-btn" id="paymentCheck" style="padding: 3%; font-size: 18px;">결제하기</button>
                             </div>
                         </div>
                     </div>
@@ -306,17 +306,17 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script> --%>
 <%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script> --%>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.nicescroll.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.magnific-popup.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.countdown.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.nicescroll.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.magnific-popup.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.countdown.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script> --%>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script> --%>
+<!--     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
+<%--     <script src="${pageContext.request.contextPath }/resources/js	/main.js"></script> --%>
     <script src="${pageContext.request.contextPath }/resources/js/checkout.js"></script>
 </body>
 

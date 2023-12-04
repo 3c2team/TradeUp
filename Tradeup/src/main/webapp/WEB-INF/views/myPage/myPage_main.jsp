@@ -47,7 +47,11 @@
     <!-- 없으면 대분류 클릭 시 소분류 안나옴  -->
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/vendor/js/helpers.js"></script>
     <script src="${pageContext.request.contextPath }/resources/myPage/assets/js/config.js"></script>
+    
+    
     <%----------%>
+    
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
 </head>
 <body>
 	<%-- 탑 메뉴 --%>
@@ -122,7 +126,12 @@
 											</div>
 											<span class="fw-semibold d-block mb-1">Pay</span>
 											<h3 class="card-title mb-2">50,000원</h3>
-											<small class="text-success fw-semibold">충전하기</small>
+											<small
+												class="text-success fw-semibold"
+												data-bs-toggle="modal"
+												data-bs-target="#smallModal"
+												style="cursor:pointer"
+											>충전하기</small>
 										</div>
 									</div>
 								</div>
@@ -165,8 +174,6 @@
 						<!-- / 상단 2 -->
 					</div>
 						
-			
-			
 					<div class="row">
 						<!-- 거래내역 -->
 						<div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
@@ -174,7 +181,7 @@
 								<div class="card-header d-flex align-items-center justify-content-between pb-0">
 									<div class="card-title mb-0">
 										<h5 class="m-0 me-2">거래내역</h5>
-										<small class="text-muted">42.82k Total Sales</small>
+										<small class="text-muted">이번달 거래내역</small>
 									</div>
 									<div class="dropdown">
 										<button
@@ -336,7 +343,9 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<%-- 모달  --%>
+	<jsp:include page="modal/up_pay.jsp"></jsp:include>
 	<%-- 바텀 메뉴 --%>
 	<jsp:include page="../inc/bottom.jsp"></jsp:include>
 	

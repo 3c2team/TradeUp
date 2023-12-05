@@ -14,7 +14,7 @@
 <title>Male-Fashion | Template</title>
 <jsp:include page="../inc/style.jsp"></jsp:include>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.7.0.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/shops_detail.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/shop_details.js"></script> --%>
 <script type="text/javascript">
 // 	function payCheck(){
 // 		if(${sessionScope.sId} == null){
@@ -27,6 +27,90 @@
 // 		}
 		
 // 	}
+
+
+// var map = null,
+// customOverlay = new kakao.maps.CustomOverlay({}),
+// kkoMap = {
+//   initKko: function (o) {
+//     var e = o.mapId,
+//       t = document.getElementById(e),
+//       a = {
+//         center: new kakao.maps.LatLng(37.567509, 126.980663),
+//         level: 13,
+//       };
+//     (map = new kakao.maps.Map(t, a)),
+//       $.getJSON("./json/sigu.json", function (o) {
+//         let e = $(o.features);
+//         e.each(function () {
+//           kkoMap.getPolycode($(this)[0]);
+//         });
+//       });
+//   },
+//   getPolycode: function (o) {
+//     var e = [],
+//       t = o.geometry;
+//     if ("Polygon" == t.type) {
+//       var a = t.coordinates[0],
+//         n = { name: o.properties.adm_nm, path: [] };
+//       for (var s in a)
+//         e.push({ x: p[s][1], y: p[s][0] }),
+//           n.path.push(new kakao.maps.LatLng(a[s][1], a[s][0]));
+//       kkoMap.setPolygon(n, e);
+//     } else if ("MultiPolygon" == t.type)
+//       for (var s in t.coordinates) {
+//         var p = t.coordinates[s],
+//           n = { name: o.properties.adm_nm, path: [] };
+//         for (var r in p[0])
+//           e.push({ x: p[0][r][1], y: p[0][r][0] }),
+//             n.path.push(new kakao.maps.LatLng(p[0][r][1], p[0][r][0]));
+//         kkoMap.setPolygon(n, e);
+//       }
+//   },
+//   setPolygon: function (o, e) {
+//     var t = new kakao.maps.Polygon({
+//       name: o.name,
+//       path: o.path,
+//       strokeWeight: 2,
+//       strokeColor: "#004c80",
+//       strokeOpacity: 0.8,
+//       fillColor: "#fff",
+//       fillOpacity: 0.7,
+//     });
+//     kakao.maps.event.addListener(t, "mouseover", function (a) {
+//       t.setOptions({ fillColor: "#09f" }),
+//         customOverlay.setPosition(kkoMap.centroid(e)),
+//         customOverlay.setContent(
+//           "<div class='overlaybox'>" + o.name + "</div>"
+//         ),
+//         customOverlay.setMap(map);
+//     }),
+//       kakao.maps.event.addListener(t, "mouseout", function () {
+//         t.setOptions({ fillColor: "#fff" }), customOverlay.setMap(null);
+//       }),
+//       t.setMap(map);
+//   },
+//   centroid: function (o) {
+//     var e, t, a, n, s, p, r, i, l;
+//     for (e = 0, r = i = l = 0, t = (a = o.length) - 1; e < a; t = e++)
+//       (n = o[e]),
+//         (s = o[t]),
+//         (p = n.y * s.x - s.y * n.x),
+//         (i += (n.x + s.x) * p),
+//         (l += (n.y + s.y) * p),
+//         (r += 3 * p);
+//     return new kakao.maps.LatLng(i / r, l / r);
+//   },
+// };
+// $(function () {
+	
+//   kkoMap.initKko({ mapId: "map" });
+  
+//   $("#product_info").getContents().replaceAll("<br>", "\r\n");
+//   if()
+//   $("#product_info").getContents().replaceAll("new", "\r\n");
+  
+// });
 </script>
 </head>
 <body>
@@ -52,14 +136,19 @@
 									</div>
 									<div class="carousel-inner">
 										<div class="carousel-item active">
-											<img class="product__details__pic__form" id="main_img" src="${pageContext.request.contextPath }/resources/img/shop-details/ex.jpg" class="d-block w-100" alt="...">
+											<img class="product__details__pic__form" id="main_img" src="${pageContext.request.contextPath }${product.product_main_img}" class="d-block w-100" >
 										</div>
-										<div class="carousel-item">
-											<img class="product__details__pic__form" id="main_img" src="${pageContext.request.contextPath }/resources/img/shop-details/product-big.png" class="d-block w-100" alt="...">
-										</div>
-										<div class="carousel-item">
-											<img class="product__details__pic__form" id="main_img" src="${pageContext.request.contextPath }/resources/img/shop-details/product-big-2.png" class="d-block w-100" alt="...">
-										</div>
+										<c:forEach items="${productImg }" var="productImg" begin="0" varStatus="status">
+											<div class="carousel-item">
+												<img class="product__details__pic__form" src="${pageContext.request.contextPath }${productImg.product_image}" class="d-block w-100">
+											</div>
+										</c:forEach>
+<!-- 											<div class="carousel-item"> -->
+<%-- 												<img class="product__details__pic__form" src="${pageContext.request.contextPath }${productImg.product_image}" class="d-block w-100"> --%>
+<!-- 											</div> -->
+<!-- 										<div class="carousel-item"> -->
+<%-- 											<img class="product__details__pic__form" id="main_img" src="${pageContext.request.contextPath }/resources/img/shop-details/product-big-2.png" class="d-block w-100"> --%>
+<!-- 										</div> -->
 									</div>
 										<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -74,9 +163,9 @@
 							<div class="product__details__mini__pic">
 								<ul>
 								<!-- 이미지 업로드 수 만큼 조절해야함 -->
-<%-- 									<c:forEach var="product_img" items="${productMiniImgList }"> --%>
+									<c:forEach var="product_img" items="${productImg }">
 										<li><a><img src="${pageContext.request.contextPath }/resources/img/shop-details/ex.jpg" id="mini_img" ></a></li>
-<%-- 									</c:forEach> --%>
+									</c:forEach>
 <%-- 									<c:if test="${not empty reviewList }"> --%>
 										<li><a><img src="${pageContext.request.contextPath }/resources/img/shop-details/thumb-1.png" id="mini_img" ></a></li>
 										<li><a><img src="${pageContext.request.contextPath }/resources/img/shop-details/thumb-2.png" id="mini_img" ></a></li>
@@ -90,17 +179,16 @@
                     <div class="col-lg-6 col-md-9">
 						<div class="product__details__content" style="margin: 10%;">
 	                        <div class="product__details__breadcrumb">
-	                            <a href="./index.jsp">홈</a>
-	                            <a href="./shop.jsp">디지털기기</a>
-	                            <a href="./shop.jsp">모바일</a>
-	                            <span>아이폰</span>
+	                            <a href="Main">홈</a>
+	                            <a href="Shop?category=${category.category_name }">${category.category_name }</a>
+	                            <span>${product.product_num }</span>
 	                        </div>
 							<div class="container">
 								<div class="row d-flex justify-content-center">
 									<div class="col-lg-8" style="max-width: 100%;">
 										<div class="product__details__text">
-											<h3>나이키 집업 자켓 팝니다</h3>
-											<h3 style="padding-bottom: 1.25rem; border-bottom: 0.01em #adb5bd solid;">35000원</h3>
+											<h3>${product.product_name }</h3>
+											<h3 style="padding-bottom: 1.25rem; border-bottom: 0.01em #adb5bd solid;">${product.product_price }</h3>
 											<div style="display: flex; text-align: center;">
 												<span>37분 전 · 조회 16 · 찜 0</span>
 											</div>
@@ -108,11 +196,11 @@
 												<div>
 													<p>배송비</p><br><h6>배송비 별도</h6>
 												</div>
-												<div style="border-left: 0.1em #adb5bd solid; padding-left: 20px;}">
-													<p>업페이</p><br><h6>사용가능</h6>
+												<div style="border-left: 0.1em #adb5bd solid; padding-left: 20px;">
+													<p>업페이</p><br><h6>${product.uppay }</h6>
 												</div>
 												<div style="border-left: 0.1em #adb5bd solid; padding-left: 20px; margin-right: 50px;">
-													<p>제품상태</p><br><h6>중고</h6>
+													<p>제품상태</p><br><h6 id="product_status">${product.product_status }</h6>
 												</div>
 											</div>
 											<h6 style="text-align: left; margin-top: 30px">직거래 희망장소</h6>
@@ -191,31 +279,7 @@
 <!--                                         <div class="product__details__tab__content__item"> -->
                                         <div class="product__details__tab__content__item">
 <!--                                         	<a name="tabs-5"></a> -->
-											<p>♡색상:브라운
-												♡소재:폴리 아크릴 혼방
-												<br>
-												♡사이즈:free
-												ㅡ가슴단면34.5,총장53.5
-												<br>
-												측정 위치와 방법에 따라
-												오차 발생 할 수 있습니다
-												<br>
-												<br>
-												<br>
-												여성스러우면서 세련된 느낌의 니트티셔츠♡
-												<br>
-												어깨패드가 장착되어있어 깔끔하고
-												고급스러운 느낌을 주는 니트티♡
-												<br>
-												랩 디자인의 과하지 않은 브이넥으로
-												부담 없이 입기좋은 티셔츠♡
-												<br>
-												스커트,청바지,슬랙스 등
-												어떤하의와도 코디하기 좋은 니트티♡
-												<br>
-												<br>
-												데일리룩부터 하객룩, 오피스룩, 데이트룩
-												언제든 입기좋은 니트티♡</p>
+											<p id="product_info">${product.product_info }
                                         </div>
                                     </div>
                                 </div>

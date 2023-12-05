@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.tradeup.service.MainService;
-import com.mysql.cj.Session;
 
 @Controller
 public class MainController {
@@ -58,49 +57,6 @@ public class MainController {
 //		session.setAttribute("sId", "hyeri123");
 		
 		return "main";
-	}
-	@GetMapping("Shop")
-	public String shop(Model model,@RequestParam(required = false) Map<String,String> map) {
-		
-		List<Map<String, String>> selectCategory = service.selectCategory();
-		
-//		System.out.println(selectCategory);
-		System.out.println(map);
-		if(map.get("price") != null) {
-			System.out.println("일단 이건 성공");
-			String[] price = map.get("price")
-							.replace("만원", "0000")
-							.replace("이상", "")
-							.replace("이하", "")
-							.trim()
-							.split("-");
-			for(int i = 0; i < price.length; i++) {
-				if(i == 1) {
-					map.put("minPrice", price[i]);
-				}
-				map.put("maxPrice", price[i]);
-			}
-		}
-		List<Map<String, Object>> selectProduct = service.selectProduct(map);
-		System.out.println("상품 목록" + selectProduct);
-		model.addAttribute("selectProduct",selectProduct);
-		model.addAttribute("selectCategory",selectCategory);
-		return "shop/shop";
-	}
-	
-	@GetMapping("ShopForm")
-	public String shopForm(@RequestParam(required = false) Map<String,String> map, HttpSession session, Model model) {
-		// 로그인X 처리
-		if(session.getAttribute("sId") == null) {
-			model.addAttribute("msg", "로그인 후 이용부탁드립니다.");
-			model.addAttribute("target", "redirect:/Main");
-			return "fail_back";
-		}
-		
-		List<Map<String, String>> selectCategory = service.selectCategory();
-//		System.out.println(selectCategory);
-		model.addAttribute("selectCategory",selectCategory);
-		return "shop/shop_form";
 	}
 	
 	@GetMapping("ShoppingCart")
@@ -187,21 +143,7 @@ public class MainController {
 			}
 
 	return "redirect:/UserCustomer";
-	}
-	
-//	@PostMapping("MarketPriceInquiryPro")
-//	public String marketPriceInquiryPro(@RequestParam Map<String, String> map,Model model) {
-//		String product_name = (String)map.get("product_name").replaceAll(" ", "");
-//		
-//		if(product_name.equals(""))return "redirect:/MarketPriceInquiry";
-//		Map<String, String> selectPrice = service.selectProductPrice(product_name);
-//		System.out.println("검색값 : " + product_name);
-//		System.out.println("불러올값 : " + selectPrice);
-//		selectPrice.put("product_name",product_name );
-//		model.addAttribute("selectPrice",selectPrice);
-//		return "market_price_inquiry_success";
-//	}
-//	
+	}	
 	@ResponseBody
 	@PostMapping("SelectQnaCategorys")
 	public List<Map<String, String>> selectQnaCategorys(@RequestParam(required = false) int qnaCategoryName) {
@@ -217,14 +159,10 @@ public class MainController {
 	return service.selectOftenQna(map);
 
 	}	
-//	@PostMapping("selectProductPriceAVG")
-//	public List<Map<String, String>> selectProductPriceAVG(@RequestParam(required = false) Map<String, String> map) {
-//		System.out.println("응애 : " + map);
-////		System.out.println(service.selectOftenQna(map));
-//		return service.selectOftenQna(map);
-//		
-//	}	
-//	
+	
+	
+	
+	
 	
 
 	public String uuid(String name) {

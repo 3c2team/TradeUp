@@ -25,6 +25,7 @@ import com.itwillbs.tradeup.service.MyPageService;
 
 @Controller
 public class MyPageController {
+	//TEST
 	@Autowired
 	MyPageService service;
 	

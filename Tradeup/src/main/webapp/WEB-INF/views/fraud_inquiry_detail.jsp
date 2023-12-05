@@ -88,7 +88,7 @@
 		<hr class="custom_border_grove">
 		<div class="d-grid gap-2">
 			<input type="button" class="btn btn-light" value="다시 조회하기" onclick="location.href='FraudInquiry'">
-			<input type="button" id="open" class="btn btn-light" value="신고하기"onclick="location.href=">
+			<input type="button" id="open" class="btn btn-light" value="신고하기"onclick="location.href='MyPurchase'">
 		</div>
 	</div>
 	<jsp:include page="inc/bottom.jsp"></jsp:include>

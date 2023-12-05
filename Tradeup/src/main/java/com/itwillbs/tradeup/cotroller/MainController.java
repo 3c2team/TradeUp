@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.tradeup.service.MainService;
+import com.mysql.cj.Session;
 
 @Controller
 public class MainController {
@@ -186,7 +187,21 @@ public class MainController {
 			}
 
 	return "redirect:/UserCustomer";
-	}	
+	}
+	
+//	@PostMapping("MarketPriceInquiryPro")
+//	public String marketPriceInquiryPro(@RequestParam Map<String, String> map,Model model) {
+//		String product_name = (String)map.get("product_name").replaceAll(" ", "");
+//		
+//		if(product_name.equals(""))return "redirect:/MarketPriceInquiry";
+//		Map<String, String> selectPrice = service.selectProductPrice(product_name);
+//		System.out.println("검색값 : " + product_name);
+//		System.out.println("불러올값 : " + selectPrice);
+//		selectPrice.put("product_name",product_name );
+//		model.addAttribute("selectPrice",selectPrice);
+//		return "market_price_inquiry_success";
+//	}
+//	
 	@ResponseBody
 	@PostMapping("SelectQnaCategorys")
 	public List<Map<String, String>> selectQnaCategorys(@RequestParam(required = false) int qnaCategoryName) {
@@ -202,7 +217,14 @@ public class MainController {
 	return service.selectOftenQna(map);
 
 	}	
-	
+//	@PostMapping("selectProductPriceAVG")
+//	public List<Map<String, String>> selectProductPriceAVG(@RequestParam(required = false) Map<String, String> map) {
+//		System.out.println("응애 : " + map);
+////		System.out.println(service.selectOftenQna(map));
+//		return service.selectOftenQna(map);
+//		
+//	}	
+//	
 	
 
 	public String uuid(String name) {

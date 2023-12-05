@@ -39,7 +39,7 @@ public class AdminController {
 	@GetMapping("/AdminMain") // 메인에 차트, 지표 표시 
 	public String myPageMain(HttpSession session, Model model, Map<String, Integer> map) {
 		
-		// 금일 수수료 금액, 금일 거래량
+		// 주간 수수료 금액, 주간 거래량
 		map = adminService.selectCommission();
 		System.out.println("수수료 금액 : " + map.get("commission"));
 		System.out.println("수수료 건수 : " + map.get("count"));
@@ -71,15 +71,17 @@ public class AdminController {
 		
 		// 구매확정 수수료 내역
 		List<WithdrawVO> WithdrawCharge = adminService.selectWithdrawCharge();
-		System.out.println(WithdrawCharge);
+		System.out.println("확정완료 수수료 : " + WithdrawCharge);
 		model.addAttribute("CommissionList",WithdrawCharge);
 		
 		// 금일 수수료 금액, 금일 거래량
-		map = adminService.selectCommission();
-		System.out.println("수수료 금액 : " + map.get("commission"));
-		System.out.println("수수료 건수 : " + map.get("count"));
-		model.addAttribute("commission",map.get("commission") );
-		model.addAttribute("count",map.get("count"));
+//		map = adminService.selectCommission();
+//		System.out.println("수수료 금액 : " + map.get("commission"));
+//		System.out.println("수수료 건수 : " + map.get("count"));
+//		model.addAttribute("commission",map.get("commission") );
+//		model.addAttribute("count",map.get("count"));
+		map = adminService.selectCommissionSum();
+		model.addAttribute("commission",map.get("chargeSum") );
 		
 //		return "";
 		return "admin/product_charge";
@@ -87,10 +89,21 @@ public class AdminController {
 	
 	// 거래내역
 	@GetMapping("/Transaction")
-	public String transaction(Model model) {
+	public String transaction(
+					@RequestParam Map<String, String> map
+					, Model model
+					, @RequestParam(defaultValue = "") String startDate
+					, @RequestParam(defaultValue = "") String endDate) {
 		
 		// 거래 방법 출력(일주일)
-		Map<String, Integer> TransactionCount = adminService.selectTransactionWeek();
+//		Map<String, Integer> TransactionCount = adminService.selectTransaction();
+//		model.addAttribute("TransactionCount", TransactionCount);
+		
+		map.put("startDate", startDate);
+		map.put("endDate",endDate);
+		
+		Map<String, Integer> TransactionCount = adminService.selectTransactionWeek(map);
+		System.out.println("뽑히는가1? : " + TransactionCount);
 		model.addAttribute("TransactionCount", TransactionCount);
 		
 		return "admin/product_transaction";
@@ -383,17 +396,48 @@ public class AdminController {
 		return "admin/product_transaction";
 	}
 	
-//	@ResponseBody
-//	@PostMapping("/TransactionMethod")
-//	public Map<String, Integer> transactionMethod(@RequestParam Map<String, String> map){
-//		// 거래 방법 출력(일주일)
-//		System.out.println("transactionMethod 들어옴");
-//		Map<String, Integer> TransactionCount = adminService.selectTransactionWeek();
-//		System.out.println("뽑히는가? : " + TransactionCount);
-//		
-//		return TransactionCount;
-//		
-//	}
+	@ResponseBody
+	@PostMapping("/TransactionMethod")
+	public Map<String, Integer> transactionMethod(
+			@RequestParam Map<String, String> map,
+			@RequestParam(defaultValue = "") String startDate, 
+			@RequestParam(defaultValue = "") String endDate){
+		
+		map.put("startDate", startDate);
+		map.put("endDate",endDate);
+		
+		System.out.println("data 확인 : " + map.get("startDate") + ", : " + map.get("endDate"));
+		
+		// 거래 방법 출력(일주일)
+		System.out.println("transactionMethod 들어옴");
+		Map<String, Integer> TransactionCount = adminService.selectTransactionWeek(map);
+		System.out.println("뽑히는가? : " + TransactionCount);
+		
+		return TransactionCount;
+		
+	}
+	
+	@PostMapping("/ChargeSearch")
+	public String chargeSearch(@RequestParam Map<String, String> map,
+			@RequestParam(defaultValue = "") String startDate, 
+			@RequestParam(defaultValue = "") String endDate) {
+		
+		map.put("startDate", startDate);
+		map.put("endDate",endDate);
+		
+		System.out.println("chargeSearch - data 확인 : " + map.get("startDate") + ", : " + map.get("endDate"));
+		
+		return "amin/product_charge";
+	}
+	
+	@GetMapping("/ChatMain")
+	public String chatMain(
+			) {
+		
+		
+		
+		return "chat/main";
+	}
 	
 	
 	

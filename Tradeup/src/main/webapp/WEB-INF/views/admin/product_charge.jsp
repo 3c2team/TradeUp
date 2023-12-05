@@ -75,7 +75,7 @@
 			<div class="layout-page">
 				<div class="content-wrapper">
 					<div class="container-xxl flex-grow-1 container-p-y">
-						<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">가지페이 /</span> 수수료 내역</h4>
+						<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">업페이 /</span> 수수료 내역</h4>
 						<!--/Table -->
 						<div class="row">
                                <div class="card-header py-3">
@@ -90,7 +90,7 @@
 						<br><br>
 						<div class="card">
 							<h5 class="card-header">수수료 내역</h5>
-								<form action="SearchList" method="post" style="margin-bottom: -25px;">	
+								<form action="ChargeSearch" method="post" style="margin-bottom: -25px;">	
 <!-- 								<form>	 -->
 									<div class="reservationConfirmTerm" style="padding-right: 30px; padding-left: 30px; margin-bottom: 20px;padding-top: 30px;">
 										<input type="hidden" id="searchType" name="searchType">

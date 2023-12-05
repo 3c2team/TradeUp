@@ -85,4 +85,13 @@
     		FROM QUESTION
     		WHERE qna_num = #{qna_num}
     	</select>
+    	<select id="selectProductPrice" resultType="map">
+	    	select avg(product_price) as product_avg
+			,max(product_price) as product_max
+			,min(product_price) as product_min
+			from PRODUCT 
+			where product_name like '%${product_name}%'
+			group by product_name
+			limit 20
+		</select>
     </mapper>

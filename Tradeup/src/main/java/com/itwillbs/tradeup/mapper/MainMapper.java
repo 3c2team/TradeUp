@@ -28,5 +28,7 @@ public interface MainMapper {
 
 	Map<String, String> selectQnaDetail(int qna_num);
 
+	Map<String, String> selectProductPrice(String product_name);
+
 
 }

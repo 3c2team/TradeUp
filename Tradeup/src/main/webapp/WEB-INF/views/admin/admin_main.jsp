@@ -74,7 +74,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                              금일 수수료 금액</div>
+                                              주간 수수료 금액</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><fmt:formatNumber value="${commission }" pattern="#,###" /> 원</div>
                                         </div>
                                         <div class="col-auto">
@@ -92,7 +92,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                금일 거래량</div>
+                                                주간 거래량</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><fmt:formatNumber value="${count }" pattern="#,###" /> 건</div>
                                         </div>
                                         <div class="col-auto">
@@ -109,7 +109,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">금일 회원가입 수
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">주간 회원가입 수
                                             </div>
 	                                        <div class="row no-gutters align-items-center">
 	                                            <div class="col-auto">
@@ -130,7 +130,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                               금일 회원탈퇴 수</div>
+                                               주간 회원탈퇴 수</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${memberOut } 명</div>
                                         </div>
                                     </div>

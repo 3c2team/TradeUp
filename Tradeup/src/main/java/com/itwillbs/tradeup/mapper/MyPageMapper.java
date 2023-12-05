@@ -25,4 +25,6 @@ public interface MyPageMapper {
 	int deleteInfo(Map<String, Object> param);
 	// 계좌관리&배송지관리 - 메인 변경
 	int updateMainInfo(Map<String, Object> param);
+	// 배송지관리 - 정보 수정
+	int updateAddress(Map<String, Object> param);
 }

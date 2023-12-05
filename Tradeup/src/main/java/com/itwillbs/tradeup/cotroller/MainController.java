@@ -58,49 +58,6 @@ public class MainController {
 		
 		return "main";
 	}
-	@GetMapping("Shop")
-	public String shop(Model model,@RequestParam(required = false) Map<String,String> map) {
-		
-		List<Map<String, String>> selectCategory = service.selectCategory();
-		
-//		System.out.println(selectCategory);
-		System.out.println(map);
-		if(map.get("price") != null) {
-			System.out.println("일단 이건 성공");
-			String[] price = map.get("price")
-							.replace("만원", "0000")
-							.replace("이상", "")
-							.replace("이하", "")
-							.trim()
-							.split("-");
-			for(int i = 0; i < price.length; i++) {
-				if(i == 1) {
-					map.put("minPrice", price[i]);
-				}
-				map.put("maxPrice", price[i]);
-			}
-		}
-		List<Map<String, Object>> selectProduct = service.selectProduct(map);
-		System.out.println("상품 목록" + selectProduct);
-		model.addAttribute("selectProduct",selectProduct);
-		model.addAttribute("selectCategory",selectCategory);
-		return "shop/shop";
-	}
-	
-	@GetMapping("ShopForm")
-	public String shopForm(@RequestParam(required = false) Map<String,String> map, HttpSession session, Model model) {
-		// 로그인X 처리
-		if(session.getAttribute("sId") == null) {
-			model.addAttribute("msg", "로그인 후 이용부탁드립니다.");
-			model.addAttribute("target", "redirect:/Main");
-			return "fail_back";
-		}
-		
-		List<Map<String, String>> selectCategory = service.selectCategory();
-//		System.out.println(selectCategory);
-		model.addAttribute("selectCategory",selectCategory);
-		return "shop/shop_form";
-	}
 	
 	@GetMapping("ShoppingCart")
 	public String shoppingCart() {
@@ -202,6 +159,9 @@ public class MainController {
 	return service.selectOftenQna(map);
 
 	}	
+	
+	
+	
 	
 	
 
